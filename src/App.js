@@ -1,5 +1,6 @@
+import "./dotenv"
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { analyzeImage } from "./azure-image-analysis"
 import { generateImage } from "./azure-image-generation"
 import './App.css';
@@ -28,10 +29,20 @@ function App() {
     }
   }
 
-  const handleImageGeneration = () => {
-    // Lógica para activar generación de imágenes (se implementará en el futuro)
-    console.log('Generación de imágenes activada para:', inputValue);
-  };
+  const displayResults2 = async () => {
+    try {
+      let result  = await generateImage(inputValue)
+      let imageGeneralized = result[0].url
+
+      if(imageGeneralized){
+        setInputValue(imageGeneralized)
+      }
+      
+      return result
+    } catch (error) {
+      console.log("error", error)
+    }
+  }
 
   return (
     <div className="App">
@@ -51,7 +62,9 @@ function App() {
       }}>
         Analyze
       </button>
-      <button onClick={handleImageGeneration}>Generate</button>
+      <button onClick={() => {
+        displayResults2()
+      }}>Generate</button>
       <div className='analyzedData'>
       <h2>Computer Vision Analysis</h2>
       <img src={inputValue} alt='Image' />
