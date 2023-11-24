@@ -1,6 +1,7 @@
+import "./dotenv"
 const analyzeImage = async (inputValue, setReceiveInput) => {
-  const apiKey = '......';
-  const endpoint = 'https:';
+  const apiKey = process.env.REACT_APP_REACT_APIKEY;
+  const endpoint = process.env.REACT_APP_REACT_ENDPOINT;
   const apiUrl = `${endpoint}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,read,caption,denseCaptions,smartCrops,objects,people`
 
   try {
@@ -22,8 +23,7 @@ const analyzeImage = async (inputValue, setReceiveInput) => {
     }
   } catch (error) {
     throw error;
-  } 
+  }
 };
-
 export { analyzeImage }
 
