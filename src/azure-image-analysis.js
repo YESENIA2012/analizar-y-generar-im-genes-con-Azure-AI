@@ -1,6 +1,6 @@
 const analyzeImage = async (inputValue, setReceiveInput) => {
-  const apiKey = '43dacccf5b3a48b7af77db7ebd328211';
-  const endpoint = 'https://azure-ai-vision-service.cognitiveservices.azure.com/';
+  const apiKey = '......';
+  const endpoint = 'https:';
   const apiUrl = `${endpoint}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,read,caption,denseCaptions,smartCrops,objects,people`
 
   try {
